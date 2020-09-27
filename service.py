@@ -13,9 +13,9 @@ def hello():
 
 @app.route('/<user>', methods=['GET'])
 def check_in(user):
-    logging.INFO(f"got request for {user}")
+    logging.info(f"got request for {user}")
     prediction = predict_user(user)
-    logging.INFO(f"prediction: user {user} is {prediction}")
+    logging.info(f"prediction: user {user} is {prediction}")
     return prediction
 
 

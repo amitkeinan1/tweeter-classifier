@@ -7,7 +7,7 @@ import logging
 
 def predict_user(user):
     pred, found = check_cache(user)
-    logging.INFO(f"user {user} found in cache? {found}")
+    logging.info(f"user {user} found in cache? {found}")
     if not found:
         tweets = get_tweets_of_user(user)
         text = get_one_text(tweets)

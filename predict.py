@@ -2,11 +2,12 @@ from get_tweets import get_tweets_of_user
 from parse_texts import get_one_text
 import pickle
 import os
+import logging
 
 
 def predict_user(user):
     pred, found = check_cache(user)
-    print(found)
+    logging.INFO(f"user {user} found in cache? {found}")
     if not found:
         tweets = get_tweets_of_user(user)
         text = get_one_text(tweets)

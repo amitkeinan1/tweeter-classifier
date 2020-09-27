@@ -1,4 +1,5 @@
 from flask import Flask
+import logging
 
 from predict import predict_user
 
@@ -12,6 +13,7 @@ def hello():
 
 @app.route('/<user>', methods=['GET'])
 def check_in(user):
+    logging.INFO(f"got request for {user}")
     return predict_user(user)
 
 

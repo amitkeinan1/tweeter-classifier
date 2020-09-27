@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask
 
 from predict import predict_user
 
@@ -16,4 +16,4 @@ def check_in(user):
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8888)
+    app.run()

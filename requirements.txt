@@ -4,3 +4,4 @@ sklearn
 pandas
 numpy
 gunicorn
+python-twitter

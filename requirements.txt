@@ -1,0 +1,7 @@
+Flask
+pickle
+sklearn
+pandas
+re
+numpy
+gunicorn

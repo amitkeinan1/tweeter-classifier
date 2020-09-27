@@ -1,0 +1,1 @@
+web: gunicorn app:tweeter-classifier

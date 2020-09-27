@@ -2,6 +2,5 @@ Flask
 pickleshare
 sklearn
 pandas
-re
 numpy
 gunicorn

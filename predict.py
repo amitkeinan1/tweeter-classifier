@@ -3,6 +3,7 @@ from parse_texts import get_one_text
 import pickle
 import os
 import logging
+logging.getLogger().addHandler(logging.StreamHandler())
 
 
 def predict_user(user):

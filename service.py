@@ -1,5 +1,6 @@
 from flask import Flask
 import logging
+logging.getLogger().addHandler(logging.StreamHandler())
 
 from predict import predict_user
 

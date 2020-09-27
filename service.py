@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify
 
 from predict import predict_user
 
-app = Flask("tweeter-classifier")
+app = Flask(__name__)
 
 
 @app.route('/')

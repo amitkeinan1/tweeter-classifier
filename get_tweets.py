@@ -4,13 +4,13 @@ import os
 import concurrent.futures
 import logging
 
+consumer_key = "Y10IclmXbqLuyaEsfBxOEB1TF"
+consumer_secret = "NKSv6MEcJVuj47VMfzjTfxl4IqYJBUeJupV1rCtnkywW3jvVFu"
+access_token = "964906800389808128-dQMU1SqETThRJ0pd9bxTb0f0DDVtRnk"
+access_token_secret = "l4tJlvblYkmqUWO9atrLADHNZqeYpRGixZPRHgCmFlRWS"
+
 
 def get_tweets_of_user(user):
-    consumer_key = os.environ['consumer_key']
-    consumer_secret = os.environ['consumer_secret']
-    access_token = os.environ['access_token']
-    access_token_secret = os.environ['access_token_secret']
-
     api = twitter.Api(consumer_key=consumer_key,
                       consumer_secret=consumer_secret,
                       access_token_key=access_token,

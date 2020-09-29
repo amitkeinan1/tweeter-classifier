@@ -15,10 +15,10 @@ def home():
 @app.route('/', methods=['POST'])
 def my_form_post():
     user = request.form['user']
-    return redirect(f"/{user}")
+    return redirect(f"/user={user}")
 
 
-@app.route('/<user>', methods=['GET'])
+@app.route('/user=<user>', methods=['GET'])
 def predict_user_site(user):
         pred, words = predict_user(user, MODEL_NAME)
         return render_template("result.html", user=user, pred=pred, words=words)

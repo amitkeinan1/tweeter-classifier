@@ -15,8 +15,7 @@ def get_tweets_of_user(user):
                       consumer_secret=consumer_secret,
                       access_token_key=access_token,
                       access_token_secret=access_token_secret)
-    logging.warning(user)
-    tweets = api.GetUserTimeline(screen_name="amit_segal", count=200)
+    tweets = api.GetUserTimeline(screen_name=user, count=200)
     texts = [tweet.text for tweet in tweets]
     return texts
 

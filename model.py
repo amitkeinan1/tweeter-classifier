@@ -4,14 +4,8 @@ import pickle
 
 from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
 from sklearn.linear_model import LogisticRegression
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.ensemble import RandomForestClassifier, AdaBoostClassifier
-from sklearn.metrics import roc_auc_score
 from sklearn.metrics import accuracy_score
-from sklearn.model_selection import cross_val_score
 from sklearn.model_selection import KFold
-
-from matplotlib import pyplot as plt
 
 stopwords = ['אני',
              'את',

@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request, redirect
-
 from predict import predict_user
 
 app = Flask(__name__)
@@ -16,16 +15,15 @@ def home():
 @app.route('/', methods=['POST'])
 def my_form_post():
     user = request.form['user']
-    return redirect(f"/{user}")
+    return redirect(f"/user={user}")
 
 
-@app.route('/<user>', methods=['GET'])
+@app.route('/user=<user>', methods=['GET'])
 def predict_user_site(user):
     try:
         pred, words = predict_user(user, MODEL_NAME)
         return render_template("result.html", user=user, pred=pred, words=words)
-    except Exception as e:
-        print(e)
+    except Exception:
         return render_template("error.html")
 
 

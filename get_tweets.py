@@ -2,12 +2,12 @@ import twitter
 import pandas as pd
 import os
 import concurrent.futures
+import logging
 
-
-consumer_key = os.environ['consumer_key']
-consumer_secret = os.environ['consumer_secret']
-access_token = os.environ['access_token']
-access_token_secret = os.environ['access_token_secret']
+consumer_key = os.environ["consumer_key"]
+consumer_secret = os.environ["consumer_secret"]
+access_token = os.environ["access_token"]
+access_token_secret = os.environ["access_token_secret"]
 
 
 def get_tweets_of_user(user):

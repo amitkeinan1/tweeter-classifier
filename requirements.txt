@@ -6,5 +6,4 @@ numpy
 gunicorn
 python-twitter
 matplotlib
-pickle
 json

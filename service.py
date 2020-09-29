@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect, flash
 import os
 
 from predict import predict_user
@@ -10,12 +10,18 @@ ERROR_MSG = "משהו לא עבד כאן... וודא שהזנת שם נכון, �
 
 
 @app.route('/')
-def hello():
+def home():
     return render_template("home.html")
 
 
+@app.route('/', methods=['POST'])
+def my_form_post():
+    user = request.form['user']
+    return redirect(f"/{user}")
+
+
 @app.route('/<user>', methods=['GET'])
-def check_in(user):
+def predict_user_site(user):
     try:
         pred, words = predict_user(user, MODEL_NAME)
         return render_template("result.html", user=user, pred=pred, words=words)

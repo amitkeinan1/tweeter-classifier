@@ -290,10 +290,8 @@ def explain_example(model, vocab, x, y):
     return words
 
 
-def fit(X_train, y_train, X_test, y_test):
-    # vector = TfidfVectorizer(max_features=500, stop_words=stopwords, ngram_range=(1, 3)).fit(X_train)
+def fit(X_train, y_train, X_test, y_test, save=False):
     vector = CountVectorizer(max_features=2000, stop_words=stopwords).fit(X_train)
-    # pickle.dump(vector, open("pickles/countvectorizer.pkl", "wb"))
     vocab = vector.vocabulary_.keys()
 
     X_train_vector = vector.transform(X_train)
@@ -303,6 +301,11 @@ def fit(X_train, y_train, X_test, y_test):
     model.fit(X_train_vector, y_train)
 
     # explain_model(model, vocab)
+
+    if save:
+        pickle.dump(vector, open("pickles/2-all/countvectorizer.pkl", "wb"))
+        pickle.dump(model, open("pickles/2-all/model.pkl", "wb"))
+        pickle.dump(list(vocab), open("pickles/2-all/vocab.pkl", "wb"))
 
     return X_train_vector, X_test_vector, model, vocab
 
@@ -335,10 +338,8 @@ def validation(X, y):
     print("valid accuracy:", np.mean(valid_accs))
 
 
-def test(X_train, y_train, X_test, y_test):
-    X_train, X_test, model, vocab = fit(X_train, y_train, X_test, y_test)
-    pickle.dump(model, open("model1.pkl", "wb"))
-    pickle.dump(list(vocab), open("vocab1.pkl", "wb"))
+def test(X_train, y_train, X_test, y_test, save=False):
+    X_train, X_test, model, vocab = fit(X_train, y_train, X_test, y_test, save)
 
     test_preds = model.predict(X_test)
     print(test_preds)
@@ -370,5 +371,5 @@ def play(X, y):
 
 if __name__ == '__main__':
     X_train, y_train, X_test, y_test = prepare_data()
-    validation(X_train, y_train)
-    # test(X_train, y_train, X_test, y_test)
+    # validation(X_train, y_train)
+    test(X_train, y_train, X_test, y_test, save=True)

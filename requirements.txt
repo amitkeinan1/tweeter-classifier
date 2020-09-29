@@ -1,6 +1,6 @@
 Flask
 pickleshare
-sklearn
+sklearn==0.21.3
 pandas
 numpy
 gunicorn

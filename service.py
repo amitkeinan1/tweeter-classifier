@@ -24,7 +24,8 @@ def predict_user_site(user):
     try:
         pred, words = predict_user(user, MODEL_NAME)
         return render_template("result.html", user=user, pred=pred, words=words)
-    except Exception:
+    except Exception as e:
+        print(e)
         return render_template("error.html")
 
 

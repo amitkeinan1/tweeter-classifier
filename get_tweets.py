@@ -33,12 +33,11 @@ def read_text_file(file_name):
 
 
 def save_user_tweets(user, side):
-    print(f"started {user}")
     if not os.path.isfile(f"tweets\\{side}\\{user}.xlsx"):
+        print(user)
         texts = get_tweets_of_user(user)
         print(len(texts))
         save_texts_in_file(f"tweets\\{side}\\{user}.xlsx", texts)
-    print(f"finished {user}")
 
 
 if __name__ == '__main__':
@@ -46,6 +45,6 @@ if __name__ == '__main__':
     left_users = read_text_file("users//left.txt")
 
     executor = concurrent.futures.ProcessPoolExecutor(20)
-    futures = [executor.submit(save_user_tweets, user, "left") for user in left_users]
+    futures = [executor.submit(save_user_tweets, user, "right") for user in right_users]
     concurrent.futures.wait(futures)
 

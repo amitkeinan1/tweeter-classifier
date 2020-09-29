@@ -1,8 +1,7 @@
 import twitter
 import pandas as pd
 import os
-import concurrent.futures
-
+import concurrent
 
 consumer_key = os.environ['consumer_key']
 consumer_secret = os.environ['consumer_secret']
@@ -32,20 +31,37 @@ def read_text_file(file_name):
     return lines
 
 
-def save_user_tweets(user, side):
+def save_user_tweets(user):
     print(f"started {user}")
-    if not os.path.isfile(f"tweets\\{side}\\{user}.xlsx"):
+    if not os.path.isfile(f"tweets\\right\{user}.xlsx"):
         texts = get_tweets_of_user(user)
         print(len(texts))
-        save_texts_in_file(f"tweets\\{side}\\{user}.xlsx", texts)
+        save_texts_in_file(f"tweets\\right\{user}.xlsx", texts)
     print(f"finished {user}")
 
 
 if __name__ == '__main__':
     right_users = read_text_file("users//right.txt")
-    left_users = read_text_file("users//left.txt")
+    # left_users = read_text_file("users//left.txt")
 
-    executor = concurrent.futures.ProcessPoolExecutor(20)
-    futures = [executor.submit(save_user_tweets, user, "left") for user in left_users]
+    executor = concurrent.futures.ProcessPoolExecutor(10)
+    futures = [executor.submit(save_user_tweets, user) for user in right_users]
     concurrent.futures.wait(futures)
 
+    # print("right")
+    # for user in right_users:
+    #     print(user)
+    #     if not os.path.isfile(f"tweets\\right\{user}.xlsx"):
+    #         texts = get_tweets_of_user(user)
+    #         print(len(texts))
+    #         save_texts_in_file(f"tweets\\right\{user}.xlsx", texts)
+    #     print()
+
+    # print("left")
+    # for user in left_users:
+    #     print(user)
+    #     if not os.path.isfile(f"tweets\\left\{user}.xlsx"):
+    #         texts = get_tweets_of_user(user)
+    #         print(len(texts))
+    #         save_texts_in_file(f"tweets\\left\{user}.xlsx", texts)
+    #     print()

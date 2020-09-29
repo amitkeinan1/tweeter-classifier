@@ -1,10 +1,12 @@
 import twitter
 import pandas as pd
+import os
 
-consumer_key = "Y10IclmXbqLuyaEsfBxOEB1TF"
-consumer_secret = "NKSv6MEcJVuj47VMfzjTfxl4IqYJBUeJupV1rCtnkywW3jvVFu"
-access_token = "964906800389808128-M5ixJPuZKWVjFh27gZKwTQnWLMKA2zH"
-access_token_secret = "9Cg9y63LII3gy4uYM8hF95VhK6sX26vBV1YY1IBUS8FYv"
+
+consumer_key = os.environ['consumer_key']
+consumer_secret = os.environ['consumer_secret']
+access_token = os.environ['access_token']
+access_token_secret = os.environ['access_token_secret']
 
 
 def get_tweets_of_user(user):

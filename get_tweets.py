@@ -2,6 +2,7 @@ import twitter
 import pandas as pd
 import os
 import concurrent.futures
+import logging
 
 
 def get_tweets_of_user(user):
@@ -9,11 +10,12 @@ def get_tweets_of_user(user):
     consumer_secret = os.environ['consumer_secret']
     access_token = os.environ['access_token']
     access_token_secret = os.environ['access_token_secret']
-    
+
     api = twitter.Api(consumer_key=consumer_key,
                       consumer_secret=consumer_secret,
                       access_token_key=access_token,
                       access_token_secret=access_token_secret)
+    logging.warning(user)
     tweets = api.GetUserTimeline(screen_name=user, count=200)
     texts = [tweet.text for tweet in tweets]
     return texts

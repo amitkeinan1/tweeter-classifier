@@ -370,5 +370,5 @@ def play(X, y):
 
 if __name__ == '__main__':
     X_train, y_train, X_test, y_test = prepare_data()
-    # validation(X_train, y_train)
-    test(X_train, y_train, X_test, y_test)
+    validation(X_train, y_train)
+    # test(X_train, y_train, X_test, y_test)

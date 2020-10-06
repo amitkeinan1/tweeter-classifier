@@ -1,1 +1,1 @@
-web: gunicorn app:tweeter-classifier
+web: gunicorn service:app

@@ -66,6 +66,7 @@ def get_one_text(texts):
 def get_one_text_from_excel(user, side):
     texts = get_texts_from_excel(f"tweets\\{side}\\{user}.xlsx")
     concat_text = get_one_text(texts)
+    return concat_text
 
 
 if __name__ == '__main__':
